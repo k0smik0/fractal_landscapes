@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="." href="ifs.jnlp">
+    <information>
+        <title>IFS Felt</title>
+        <vendor>Massimiliano Leone</vendor>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.7+" href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="build/ifs-felt.jar" main="true" />
+    </resources>
+    <application-desc
+         name="IFS Felt"
+         main-class="net.iubris.fractal_landscapes.ifs.IFS">
+     </application-desc>
+     <update check="background"/>
+</jnlp>

@@ -126,7 +126,7 @@ public class Mountapp extends Applet implements Runnable, MouseListener {
 		} else {
 			// start animating
 			if (t == null) {
-			t = new Thread(this);
+				t = new Thread(this);
 			}
 			t.start();
 		}
@@ -196,22 +196,30 @@ public class Mountapp extends Applet implements Runnable, MouseListener {
 			// to give a constant update rate. If the update takes too long
 			// things will of course be slower.
 			if (art.scroll != 0) {
-			// snooze=long_sleep;
-			snooze = target_time + long_sleep - System.currentTimeMillis();
+				// snooze=long_sleep;
+				snooze = target_time + long_sleep - System.currentTimeMillis();
 			} else {
-			// snooze=little_sleep;
-			snooze = target_time + little_sleep - System.currentTimeMillis();
+				// snooze=little_sleep;
+				snooze = target_time + little_sleep - System.currentTimeMillis();
 			}
-			if (snooze > 0) {
-			// try{Thread.currentThread().sleep(snooze);}catch (InterruptedException e){}
-			try {
-				Thread.sleep(snooze);
-			} catch (InterruptedException e) {
-			}
+			/*if (snooze > 0) {
+				// try{Thread.currentThread().sleep(snooze);}catch (InterruptedException e){}
+				try {
+					Thread.sleep(snooze);
+				} catch (InterruptedException e) {
+				}
 			} else {
-			// let other threads hava a go.
-			// Thread.currentThread().yield();
-			Thread.yield();
+				// let other threads hava a go.
+				// Thread.currentThread().yield();
+				Thread.yield();
+			}*/
+			
+			if (snooze<0)
+				try {
+					Thread.sleep(little_sleep*10);
+				} catch (InterruptedException e) {}
+			if (snooze >= 100) {
+				Thread.yield();
 			}
 		}
 	}
