@@ -1,0 +1,95 @@
+<!-- author: Massimiliano Leone - http://plus.google.com/+MassimilianoLeone - 2015, GPL license -->
+<html>
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  
+  <style>
+    .alone {
+      float:left; clear:both;
+      margin-left: 10px;
+    }
+    .side {
+      float:left; clear:none;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<p><b>MtFractal</b></p>
+
+
+<div class="side">
+  <applet codebase="bin" id="MtFractalApplet"
+  code="net.iubris.fractal_landscapes.mtfractal.applet.MtFractalApplet.class" 
+  width=450 height=450 MAYSCRIPT>
+    <param name="margin" value="20"/>
+    <param name="sealevel" value="0"/>
+    <param name="cornerOffset" value="250"/>
+    <param name="iterations" value="6"/>
+    <param name="debug" value="true"/>
+    <param name="H" value="10"/>
+    <param name="loop" value="true"/>
+  </applet>
+</div>
+
+<div class="side">
+  <div class="alone">
+    <div class="side">iterations:</div>
+    <input class="side" id="iterations" size="1" value=6></input>
+  </div>
+  <div class="alone">
+    <div class="side">sea level:</div>
+    <input class="side" id="seaLevel" size="1" value=20></input>
+  </div>
+  <div class="alone">
+    <div class="side">smoothness:</div>
+    <input class="side" id="H" size="1" value=50></input>
+  </div>
+  <div class="alone">
+    <div class="side">delay (msec):</div>
+    <input class="side" id="delay" size="2" value=500></input>
+  </div>
+  <div class="alone">
+    <div class="side">loop:</div>
+    <input class="side" id="loop" size="2" value=true></input>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+<button class="alone" id="set" onclick="setAppletParameter();">set</button>
+</div>
+<script type="text/javascript"> 
+  function setAppletParameter() {
+      var iterations = document.getElementById("iterations").value;
+      MtFractalApplet.setIterations(iterations);
+      
+      var H = document.getElementById("H").value;
+      MtFractalApplet.setH(H);
+      
+      var seaLevel = document.getElementById("seaLevel").value;
+      MtFractalApplet.setSeaLevel(seaLevel);
+      
+      var delay = document.getElementById("delay").value;
+      MtFractalApplet.setDelay(delay);
+       
+      var loop = document.getElementById("loop").value;
+      MtFractalApplet.setLoop(loop);
+  }
+</script>
+
+<p class="alone">
+  <div class="alone">original applet code at: <a href="http://www536.pair.com/bgw/applets/1.02/MtFractal/MtFractal.java">http://www536.pair.com/bgw/applets/1.02/MtFractal/MtFractal.java</a></div>
+  <div class="alone">modified by: Massimiliano Leone <a href="http://plus.google.com/+MassimilianoLeone">http://plus.google.com/+MassimilianoLeone</a></div>
+</p>
+
+</body>
+</html>

@@ -1,12 +1,10 @@
 package uk.ac.ed.epcc.mountain;
 
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.JPanel;
 
 public class MAF {
 

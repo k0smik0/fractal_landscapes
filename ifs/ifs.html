@@ -1,0 +1,76 @@
+<html>
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  
+  <style>
+    .alone {
+      float:left; clear:both;
+      margin-left: 10px;
+    }
+    .side {
+      float:left; clear:none;
+      margin-left: 10px;
+    }
+    .right {
+      float:left; clear:right;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<p><b>IFS Felt</b></p>
+
+<div class="side">iterations:</div><input class="side" id="iterations"></input>
+<button class="right" id="start" onclick="callApplet();">start</button>
+<script type="text/javascript">
+   document.getElementById("iterations").value = 300000;
+</script>
+<br/>
+<!--applet style="float:left; clear:both;" 
+  id="IFSApplet"
+  width="400" height="400"
+  codebase="bin"
+  code="net.iubris.fractal_landscapes.ifs.applet.IFSApplet.class"
+  cache_option="no"
+  codebase_lookup="true"
+  persistState="false"
+  />
+  <param name="isInBrowser" value="true"/>
+  
+  <param name="userAgent" 
+    value="&{ getUserAgent(); };"/>
+</applet-->
+
+<object type="application/x-java-applet" height="450" width="400" 
+class="alone" id="IFSApplet" MAYSCRIPT>
+  <param name="id" value="IFSApplet">
+  <param name="classid" value="IFSApplet">
+  <!--param name="archive" value="build/ifs-felt-all.jar"-->
+  <param name="codebase" value="bin">
+  <param name="code" value="net.iubris.fractal_landscapes.ifs.applet.IFSApplet.class">
+  <param name="isInBrowser" value="true">
+  
+  Applet failed to run.  No Java plug-in was found.//if browser does not support java
+</object>
+
+<script type="text/javascript"> 
+  function callApplet() {
+    var iterations = document.getElementById("iterations").value;
+    IFSApplet.setIterations(iterations);
+    IFSApplet.call();
+  }
+</script>
+
+<div class="alone">
+  <div class="alone">original applet code at: <a href="http://introcs.cs.princeton.edu/java/22library/IFS.java.html">http://introcs.cs.princeton.edu/java/22library/IFS.java.html</a></div>
+  <div class="alone">modified by: Massimiliano Leone - <a href="http://plus.google.com/+MassimilianoLeone">http://plus.google.com/+MassimilianoLeone</a></div>
+</div>
+
+</body>
+</html>
