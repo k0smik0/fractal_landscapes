@@ -17,7 +17,7 @@ import uk.ac.ed.epcc.mountain.model.Mountain;
 // Thanks to "Cain, Robert G." <rcain@ciena.com> for
 // adding the mousehandler.
 
-public class Mountapp extends Applet implements Runnable, MouseListener {
+public class XMountainsApplet extends Applet implements Runnable, MouseListener {
 	/**
 	 * 
 	 */
@@ -36,14 +36,43 @@ public class Mountapp extends Applet implements Runnable, MouseListener {
 	public final String pinfo[][] = {
 			{ "levels", "1+", "levels of recursion (depth)" },
 			{ "stop", "1-Levels", "number of non fractal recusions" },
-			{ "fdim", "0.5-1.0", "Fractal dimansion" },
+			{ "fdim", "0.5-1.0", "Fractal dimension" },
 			{ "sleep", "miliseconds", "Sleep time before scrolling" },
 			{ "snooze", "miliseconds", "Sleep time between columns" } };
 
 	public String[][] getParameterInfo() {
 		return (pinfo);
 	}
+	
+	
 
+	public final void setLevels(int levels) {
+		this.levels = levels;
+		m.set_size(levels, stop);
+	}
+	public void setStop(int stop) {
+		this.stop = stop;
+		m.set_size(levels, stop);
+	}
+	
+	public void setSealevel(double sealevel) {
+		art.setSealevel(sealevel);
+	}
+
+	public final void setSnooze(long snooze) {
+		this.little_sleep = snooze;
+	}
+	public final void setSleep(long sleep) {
+		this.long_sleep = sleep;
+	}
+	
+	public void setFdim(double fdim) {
+		this.fdim = fdim;
+		m.set_fdim(fdim);
+	}
+
+	
+	
 	public void init() {
 		Graphics g;
 		String s;
@@ -57,7 +86,7 @@ public class Mountapp extends Applet implements Runnable, MouseListener {
 		if (s != null) {
 			i = Integer.parseInt(s);
 			if (i > 1) {
-			levels = i;
+				levels = i;
 			}
 		}
 		s = getParameter("stop");
@@ -72,7 +101,7 @@ public class Mountapp extends Applet implements Runnable, MouseListener {
 			dble = new Double(s);
 			tmp = dble.doubleValue();
 			if (tmp > 0.5 && tmp <= 1.0) {
-			fdim = tmp;
+				fdim = tmp;
 			}
 		}
 		s = getParameter("sleep");
@@ -152,15 +181,14 @@ public class Mountapp extends Applet implements Runnable, MouseListener {
 	 */
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-	}
-
+	public void mouseReleased(MouseEvent e) {}
 	@Override
-	public void mousePressed(MouseEvent e) {
-	}
-
+	public void mousePressed(MouseEvent e) {}
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		pauseOrContinue();
+	}
+	public void pauseOrContinue() {
 		if (frozen) {
 			frozen = false;
 			showStatus("mountapp restarted");
@@ -171,12 +199,10 @@ public class Mountapp extends Applet implements Runnable, MouseListener {
 			stop();
 		}
 	}
-
-	public void mouseEntered(MouseEvent e) {
-	}
-
-	public void mouseExited(MouseEvent e) {
-	}
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+	@Override
+	public void mouseExited(MouseEvent e) {}
 
 	@Override
 	public void run() {
@@ -214,11 +240,16 @@ public class Mountapp extends Applet implements Runnable, MouseListener {
 				Thread.yield();
 			}*/
 			
-			if (snooze<0)
+//			System.out.println(little_sleep);
+//			if (snooze>100) {
+//			System.out.println(art.getColumnsPlotted());
+			if (art.getColumnsPlotted() % getSize().getWidth() ==0) {
 				try {
-					Thread.sleep(little_sleep*10);
+					Thread.sleep(2*long_sleep);
 				} catch (InterruptedException e) {}
-			if (snooze >= 100) {
+			}
+//			System.out.println(snooze);
+			if (snooze >= 98) {
 				Thread.yield();
 			}
 		}

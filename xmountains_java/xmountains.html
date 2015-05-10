@@ -1,0 +1,115 @@
+<!-- author: Massimiliano Leone - http://plus.google.com/+MassimilianoLeone - 2015, GPL license -->
+<html>
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  
+  <style>
+    .alone {
+      float:left; clear:both;
+      margin-left: 10px;
+    }
+    .side {
+      float:left; clear:none;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<p><b>XMountains</b></p>
+
+
+<div class="side">
+  <applet codebase="bin" id="XMountainsApplet"
+  code="uk.ac.ed.epcc.mountain.applet.XMountainsApplet.class" 
+  width=512 height=384 MAYSCRIPT>
+    <param name="levels" value="9"/>
+    <param name="sleep" value="1000"/>
+    <param name="snooze" value="100"/>
+
+    <param name="cornerOffset" value="250"/>
+    <param name="iterations" value="6"/>
+    <param name="debug" value="true"/>
+    <param name="H" value="10"/>
+    <param name="loop" value="true"/>
+  </applet>
+</div>
+
+<div class="side">
+  <div class="alone">
+    <div class="side">recursion levels:</div>
+    <input class="side" id="levels" size="9" value=10></input>
+  </div>
+  <div class="alone">
+    <div class="side">non fractal recursions:</div>
+    <input class="side" id="stop" size="1" value=2></input>
+  </div>
+  <div class="alone">
+    <div class="side">sea level:</div>
+    <input class="side" id="seaLevel" size="1" value=0.0></input>
+  </div>
+  <div class="alone">
+    <div class="side">smothness:</div>
+    <input class="side" id="fdim" size="1" value=0.65></input>
+  </div>
+  <div class="alone">
+    <div class="side">Sleep time before scrolling:</div>
+    <input class="side" id="sleep" size="2" value=1000></input>
+  </div>
+  <div class="alone">
+    <div class="side">sleep time between columns:</div>
+    <input class="side" id="snooze" size="2" value=100></input>
+  </div>
+
+  <div class="alone">
+    <button class="alone" id="buttonSet" onclick="setAppletParameter();">set parameters</button>
+    <button style="margin-top: 5px;" class="alone" id="buttonPause" onclick="pauseRestartApplet();">pause</button>
+  </div>
+</div>
+<script type="text/javascript"> 
+  function setAppletParameter() {
+    var levels = document.getElementById("levels").value;
+    XMountainsApplet.setLevels(levels);
+
+    var sleep = document.getElementById("sleep").value;
+    XMountainsApplet.setSleep(sleep);
+
+    var seaLevel = document.getElementById("seaLevel").value;
+    XMountainsApplet.setSealevel(seaLevel);
+
+    var snooze = document.getElementById("snooze").value;
+    XMountainsApplet.setSnooze(snooze);
+
+    var fdim = document.getElementById("fdim").value;
+    XMountainsApplet.setFdim(fdim);
+    
+    var stop = document.getElementById("stop").value;
+    XMountainsApplet.setStop(stop);
+  }
+  
+  var started = true;
+  function pauseRestartApplet() {
+    XMountainsApplet.pauseOrContinue();
+    var button = document.getElementById("buttonPause");
+    if (started) {
+      button.innerHTML = "start";
+      started = false;
+    } else {
+      button.innerHTML = "pause";
+      started = true;
+    }
+  }
+</script>
+
+<p class="alone">
+  <div class="alone">original applet code at: <a href="http://www2.epcc.ed.ac.uk/~spb/javamountains/javamountains.html">http://www2.epcc.ed.ac.uk/~spb/javamountains/javamountains.html</a></div>
+  <div class="alone">modified by: Massimiliano Leone <a href="http://plus.google.com/+MassimilianoLeone">http://plus.google.com/+MassimilianoLeone</a></div>
+</p>
+
+</body>
+</html>

@@ -76,6 +76,7 @@ public class Artist{
 	private double focal;
 	private double vstrength; /* strength of vertical light source */
 	private double lstrength; /* strength of vertical light source */
+	private int columnsPlotted;
 
 	public Artist(int width, int height, Graphics gg, Mountain mm) {
 		mountains = mm;
@@ -84,6 +85,10 @@ public class Artist{
 		graph_height = height;
 		if (debug)
 			System.out.println("Artist is go");
+	}
+	
+	public void setSealevel(double sealevel) {
+		this.sealevel = sealevel;
 	}
 
 	public Graphics getGraphics() {
@@ -828,6 +833,12 @@ public class Artist{
 				}
 			}
 		}
+		
+		columnsPlotted++;
+	}
+	
+	public int getColumnsPlotted() {
+		return columnsPlotted;
 	}
 
 	/* }}} */
