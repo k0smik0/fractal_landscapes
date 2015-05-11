@@ -1,0 +1,106 @@
+<!--
+Copyleft (c) 2015, Massimiliano Leone
+
+This file is part of FractaLandscapes, and developed by 
+  Massimiliano Leone <maximilianus@gmail.com> - http://plus.google.com/+MassimilianoLeone
+    as part of https://github.com/k0smik0/fractal_landscapes/
+
+    FractaLandscapes is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    FractaLandscapes is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this software. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+  <head>
+    <!-- to be included always - start -->
+    <script src="js/jquery.1.7.2.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
+    <link rel="stylesheet" href="css/side-menu.css"></link>
+    <script src="js/items.js"></script>
+    <!-- to be included always - end -->
+    
+    <style>
+      .alone {
+	float:left; clear:both;
+	margin-left: 10px;
+      }
+      .side {
+	float:left; clear:none;
+	margin-left: 10px;
+      }
+      .right {
+	float:left; clear:right;
+	margin-left: 10px;
+      }
+      #author {
+	margin-top: 1em;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div id="core"><!-- core -->
+      <div class="side">iterations:</div><input class="side" id="iterations"></input>
+      <button class="right" id="buttonStart" onclick="callApplet();"></button>
+      <script type="text/javascript">
+	document.getElementById("iterations").value = 300000;
+      </script>
+      <object type="application/x-java-applet" height="450" width="400" class="alone" id="IFSApplet" MAYSCRIPT>
+	<param name="id" value="IFSApplet">
+	<param name="classid" value="IFSApplet">
+	<!--param name="archive" value="build/ifs-felt-all.jar"-->
+	<param name="codebase" value="../ifs/bin">
+	<param name="code" value="net.iubris.fractal_landscapes.ifs.applet.IFSApplet.class">
+	<param name="isInBrowser" value="true">
+	
+	Applet failed to run.  No Java plug-in was found.//if browser does not support java
+      </object>
+
+      <script type="text/javascript"> 
+	function callApplet() {
+	  var iterations = document.getElementById("iterations").value;
+	  IFSApplet.setIterations(iterations);
+	  IFSApplet.call();
+	}
+      </script>
+
+      <div id="author" class="alone">
+	<div class="alone">original applet code at: <a href="http://introcs.cs.princeton.edu/java/22library/IFS.java.html">http://introcs.cs.princeton.edu/java/22library/IFS.java.html</a></div>
+	<div class="alone">modified by: Massimiliano Leone - <a href="http://plus.google.com/+MassimilianoLeone">http://plus.google.com/+MassimilianoLeone</a></div>
+      </div>
+    </div>
+    <!-- end core -->
+    
+    <!-- to be included always - start -->
+    <script src="js/core.js"></script>
+    <script src="js/ui.js"></script>
+    <!-- to be included always - end -->
+    <!-- localization labels map - start -->  
+    <script type="text/javascript">
+      var labelsMap = {
+	'it': {
+	  "buttonStart": "Click"
+	},
+	'default': {
+	  "buttonStart": "Click me"
+	}
+      }
+      setTranslateLabels(getLanguage(), labelsMap);
+    </script>
+    <!-- localization labels map - end -->
+    
+    <script text="type/javascript">
+      fixHref();
+    </script>
+
+  </body>
+</html>

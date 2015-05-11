@@ -1,10 +1,98 @@
+<!--
+Copyleft (c) 2015, Massimiliano Leone
 
-<a href="koch/kkoch.html">koch curve</a>
-<br/>
-<a href="ifs/ifs.html">ifs felt</a>
-<br/>
-<a href="MtFractal/mtfractal.html">Fractal mountains wireframe</a>
-<br/>
-<a href="xmountains_java/xmountains.html">xmountains, java porting</a>
-<br/>
+This file is part of FractaLandscapes,
+	and developed by Massimiliano Leone
+	<maximilianus@gmail.com> - http://plus.google.com/+MassimilianoLeone
+	as part of https://github.com/k0smik0/fractal_landscapes/
 
+    This is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this software.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+
+  <title>FractaLandscapes</title>
+  
+  <!-- to be included always - start -->
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
+  <link rel="stylesheet" href="_web/css/side-menu.css"></link>
+  <script src="_web/js/items.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="_web/css/index.css"></link>
+  <!-- to be included always - end -->
+
+</head>
+<body>
+  
+  <div id="core">
+    <div id="intro">
+      <h2 id="intro_h2">tbf</h2>
+      <h3 id="intro_h3">tbf</h3>
+      <div id="github">
+	<a class="github" href='https://github.com/k0smik0/fractal_landscapes/'><img width=120 height=80 src='_web/images/Octocat.jpg' /></a>
+	<div id="github_text" class="github">
+	  <div id="github_label">tbf</div>
+	  <a id="github_a" href='https://github.com/k0smik0/fractal_landscapes'>https://github.com/k0smik0/fractal_landscapes/</a>
+	</div>
+      </div>
+      <div class="misc" id="presentation"></div>
+      <div class="misc" id="disclaimer"></div>
+      <div class="misc" id="browsertip"></div>
+    </div>
+    <!-- fork me corner tag -->
+    <a href="https://github.com/k0smik0/fractal_landscapes/">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+    </a>
+  </div>
+
+  <!-- to be included always - start -->
+  <script src="_web/js/items.js"></script>
+  <script src="_web/js/core.js"></script>
+  <script src="_web/js/ui.js"></script>
+  <!-- to be included always - end -->
+  <!-- localization labels map - start -->
+  <script type="text/javascript">
+    var labelsMap = {
+      it : {
+	"intro_h2" : "<p>Come utilizzare i sistemi frattali<br/>per la modellazione di forme naturali.<p/><p></p>",
+	"intro_h3" : "<p>Differenti casi d'uso di geometria frattale:<br/>dal semplice/deterministico/2D fino al 3D prospettico,<br/>con textures e lightning.</p>",
+	"github_label" : "Il codice sorgente &egrave disponibile presso github<br/>",
+	"presentation" : "Una presentazione sulla teoria matematica &egrave disponibile qui:<br/><a href='http://www.slideshare.net/k0smik0/massimiliano-leone-presentazionemodellazionefrattale'>http://www.slideshare.net/k0smik0/massimiliano-leone-presentazionemodellazionefrattale</a>",
+	"disclaimer": "<i>Il presente software &egrave fornito senza alcuna garanzia;<br/>dove non diversamente dichiarato, il codice sorgente &egrave rilasciato con licenza GPLv3.</i>",
+	"browsertip": "<i>&Egrave consigliabile l'utilizzo del browser Firefox per una migliore fruizione dei contenuti<br/>"
+		      +"Se le applet non vengono visualizzate correttamente, consultare le <a href='faq.html'>F.A.Q.</a></i>"
+      },
+      'default' : {
+	"intro_h2" : "<p>How use fractal systems to model natural shapes</p>",
+	"intro_h3" : "<p>From simple/deterministic/2D sample<br/>to 3D perspective with textures and lightning.</p>"
+			+ "<p>Choice any link from side panel and have fun!</p>",
+	"github_label" : "You can easily browse code at github<br/>",
+	"presentation": "A presentation about mathematics theory is available here (in italian): <a href='http://www.slideshare.net/k0smik0/massimiliano-leone-presentazionemodellazionefrattale'>http://www.slideshare.net/k0smik0/massimiliano-leone-presentazionemodellazionefrattale</a>",
+	"disclaimer": "<i>This work is provided without any warranty;<br/>where not otherwise declared, all source codes are released under GPLv3 license.</i>",
+	"browsertip": "<i>We recommend Firefox browser for better navigation<br/>"
+		      +"If applets are not well visualized, you could read these <a href='faq.html'>F.A.Q.</a></i>"
+      }
+    }
+    setTranslateLabels(getLanguage(), labelsMap);
+  </script>
+  <script text="type/javascript">
+    fixHref();
+  </script>
+  
+  <!-- localization labels map - end -->
+  
+  <!--aggiungere l'indirizzo https://github.com/k0smik0/fractal_landscapes alla lista degli url permessi nel pannello di controllo Java<br/>"
+  +"seguire queste guide https://www.java.com/en/download/help/win_controlpanel.xml-->
+</body>
+</html>

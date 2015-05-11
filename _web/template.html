@@ -23,25 +23,37 @@ This file (about.html) is part of FractaLandscapes,
   <head>
     <!-- to be included always - start -->
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
-    <link rel="stylesheet" href="../_web/css/side-menu.css"></link>
-    <script src="../_web/js/items.js"></script>
+    <link rel="stylesheet" href="css/side-menu.css"></link>
+    <script src="js/items.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <!-- to be included always - end -->
     
   </head>
   <body>
     <div id="core"><!-- core -->
-       <p>
-        A Java applet showing Koch snowflake<br/>
-        Click inside to go further on iterations
-      </p>
-      <applet codebase="bin" code="net.iubris.fractal_landscapes.koch.KKoch.class" width=450 height=450></applet>
-   </div>
-  <!-- end core -->
+      <div id="legend"></div>
+      <div id="about_header">
+	<span id="about_header_label">Massimiliano Leone:</span>
+	<a id="about_header_href" href="https://github.com/k0smik0">https://github.com/k0smik0</a>
+      </div>
+      <div id="plus">
+	<div class="plus_widget">
+	  <div class="g-person plus_widget" data-width="450" data-href="//plus.google.com/u/0/109344146425894173692" data-showcoverphoto="true" data-rel="author"></div>
+	</div>
+	<script type="text/javascript">
+	  window.___gcfg = {lang: 'it'};
+	  (function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'https://apis.google.com/js/platform.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+      </div>
+    </div><!-- end core -->
     
     <!-- to be included always - start -->
-    <script src="../_web/js/core.js"></script>
-    <script src="../_web/js/ui.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/ui.js"></script>
     <!-- to be included always - end -->
     <!-- localization labels map - start -->  
     <script type="text/javascript">

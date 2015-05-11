@@ -1,17 +1,17 @@
 <!--
 Copyleft (c) 2015, Massimiliano Leone
 
-This file (about.html) is part of FractaLandscapes,
+This file is part of FractaLandscapes,
 	and developed by Massimiliano Leone
 	<maximilianus@gmail.com> - http://plus.google.com/+MassimilianoLeone
 	as part of https://github.com/k0smik0/fractal_landscapes/
 
-    about.html is free software: you can redistribute it and/or modify
+    This is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    about.html is distributed in the hope that it will be useful,
+    This is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -22,42 +22,46 @@ This file (about.html) is part of FractaLandscapes,
 <html>
   <head>
     <!-- to be included always - start -->
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
-    <link rel="stylesheet" href="../_web/css/side-menu.css"></link>
-    <script src="../_web/js/items.js"></script>
+    <!--<script src="js/jquery.1.7.2.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
+    <link rel="stylesheet" href="css/side-menu.css"></link>
+    <script src="js/items.js"></script>
+    
     <!-- to be included always - end -->
     
   </head>
   <body>
     <div id="core"><!-- core -->
-       <p>
+       <p id="koch_p">
         A Java applet showing Koch snowflake<br/>
         Click inside to go further on iterations
       </p>
-      <applet codebase="bin" code="net.iubris.fractal_landscapes.koch.KKoch.class" width=450 height=450></applet>
+      <applet codebase="../koch/bin" code="net.iubris.fractal_landscapes.koch.KKoch.class" width=450 height=450></applet>
    </div>
   <!-- end core -->
     
     <!-- to be included always - start -->
-    <script src="../_web/js/core.js"></script>
-    <script src="../_web/js/ui.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/ui.js"></script>
     <!-- to be included always - end -->
     <!-- localization labels map - start -->  
     <script type="text/javascript">
       var labelsMap = {
 	'it': {
-	  "header_h3": "Chi sono",
-	  "legend": ""
+	  "koch_p": "Applet Java che mostra il 'fiocco di neve' di Koch - Clickare all'interno per procedere nell'iterazione"
 	},
 	'default': {
-	  "header_h3": "About Me",
-	  "legend": ""
+	  "koch_p": "A Java applet showing Koch snowflake - Click inside to go further on iterations"
 	}
       }
       setTranslateLabels(getLanguage(), labelsMap);
     </script>
     <!-- localization labels map - end -->
+    
+    <script text="type/javascript">
+      fixHref();
+    </script>
 
   </body>
 </html>

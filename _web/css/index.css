@@ -1,0 +1,60 @@
+#intro {
+  height: 100%;
+}
+/*.header {
+  height: 10%;
+}*/
+content {
+  text-align: center;
+}
+#intro_h2 {
+  margin: 1% 0 0 0%;
+/*   width: 110%; */
+  text-align: center;
+}
+#intro_h3 {
+  width: 100%;
+  text-align: center;
+}
+#tip, #disclaimer {
+  font-style: italic;
+  font-size: small;
+  margin-top: 2em;
+  float: left;
+  clear: both;
+  text-align: center;
+}
+#tip {
+  margin-left: 4em;
+}
+#github {
+  margin: 1em;
+  margin-left: 7%;
+}
+#presentation {
+  margin-left: 1%;
+}
+#github,#data,#browsertip,#presentation,#disclaimer {
+  float: left;
+  clear: both;
+}
+#data,#disclaimer {
+  margin-left: 1%;
+}
+#browsertip {
+  margin-top: 3em;
+  margin-left: 10%;
+}
+#github_text {
+  margin-top: 10px;
+}
+.github,.data_img {
+  float: left;
+  clear: none;
+}
+#data_label: {
+  font-weight: bold;
+}
+.misc {
+  margin-top: 10px;
+}
