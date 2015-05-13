@@ -24,8 +24,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import net.iubris.fractal_landscapes.mtfractal.applet.MtFractalApplet;
-
 public class MtFractalApp extends JFrame implements Runnable, DummyApplet {
 	
 	private static final long serialVersionUID = -5028369297336173588L;
@@ -33,7 +31,9 @@ public class MtFractalApp extends JFrame implements Runnable, DummyApplet {
 	private int width;
 	private int height;
 	private final BufferedImage image;
-	private final JLabel jLabel;
+//	private final JLabel jLabel;
+	
+	static int _H;
 
 	public MtFractalApp(Parameters parameters, int width, int height) {
 		super();
@@ -49,23 +49,26 @@ public class MtFractalApp extends JFrame implements Runnable, DummyApplet {
 		margin = 20;
 		cornerOffset = 50;
 
-		delay = 2000;
+		delay = 500;
 		iterations = 4;
 		
-		seaLevel = 0;
+		seaLevel = 20;
 		
 		debug = false;
+		
+		_H = 50;
 
 //		setBackground( Color.white );
 		
 		image = new BufferedImage(512-10, 384-10, BufferedImage.TYPE_INT_ARGB);
 		getContentPane().add( new JLabel(new ImageIcon( image )) );
-		jLabel = new JLabel("aa");
-		getContentPane().add(jLabel);
+//		jLabel = new JLabel("aa");
+//		getContentPane().add(jLabel);
 		
 		setSize(width, height);
 		setResizable(true);
 		setVisible(true);
+		
 		pack();
 		repaint();
 	}
@@ -100,11 +103,25 @@ public class MtFractalApp extends JFrame implements Runnable, DummyApplet {
 //			System.out.println(seaLevel);
 		}
 		
+		param = getParameter( "H" );
+		if ( param != null ) {
+			setH( Integer.parseInt( param ));
+		}
+		
 		param = getParameter( "debug" );
 		if ( (param != null) && param.equals("true") ) {
 			debug = true;
 			System.out.println("Iteration\t# Rectangles\tMsec\tMemory Used\tFree Memory\tTotal Memory");
 		}
+		
+		
+	}
+	public void setH(int H) {
+		_H = H;
+		if (_H < 10)
+			cornerOffset = 200;
+		else 
+			cornerOffset = 50;
 	}
 	
 	private void createStartRectangles() {
@@ -299,7 +316,7 @@ public class MtFractalApp extends JFrame implements Runnable, DummyApplet {
 			return (String) field.get(parameters);
 		} catch(NoSuchFieldException e) {
 //			e.printStackTrace();
-			System.err.println("no field «"+parameterName+"»");
+			System.err.println("no field \'"+parameterName+"\'");
 		} catch (IllegalArgumentException | IllegalAccessException | SecurityException e) {
 			e.printStackTrace();
 		}
@@ -567,7 +584,7 @@ class FVertex {
 		_h = _h + (int)(factor * ((xdiff + ydiff) / 4));
 		
 		// new
-		double pow = Math.pow(0.5, (factor) * MtFractalApplet._H/ 2);
+		double pow = Math.pow(0.5, (factor) * MtFractalApp._H/ 2);
 		double h = _h + (xdiff + ydiff) *(pow);
 		System.out.println(xdiff + ydiff+", "+h);
 		_h = (int) h;

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="xmountains_java">
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.8" />
+	<property name="source" value="1.8" />
+	<path id="xmountains_java.classpath">
+		<pathelement location="bin" />
+	</path>
+	<target name="init">
+		<mkdir dir="bin" />
+		<mkdir dir="build" />
+	</target>
+	<target name="clean">
+		<delete dir="bin/net" />
+		<delete file="build/xmountains.jar" />
+	</target>
+	<target depends="clean" name="cleanall" />
+	<target depends="build-subprojects,build-project,jar" name="build" />
+	<target name="build-subprojects" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src/main" />
+			<classpath refid="xmountains_java.classpath" />
+		</javac>
+	</target>
+	<target name="build-refprojects" />
+	<target name="XMountainsApplet">
+		<java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
+			<arg line="XMountainsApplet.html" />
+			<classpath refid="xmountains_java.classpath" />
+		</java>
+	</target>
+	<target name="XMountainsApp">
+		<java classname="uk.ac.ed.epcc.mountain.app.XMountainsApp" failonerror="true" fork="yes">
+			<classpath refid="xmountains_java.classpath" />
+		</java>
+	</target>
+	<target name="jar">
+		<mkdir dir="build" />
+		<jar destfile="build/xmountains.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="net.iubris.fractal_landscapes.xmountains.app.XMountainsApp" />
+			</manifest>
+		</jar>
+	</target>
+</project>

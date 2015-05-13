@@ -49,20 +49,21 @@ This file is part of FractaLandscapes, and developed by
   </head>
   <body>
     <div id="core"><!-- core -->
-      <div class="side">iterations:</div><input class="side" id="iterations"></input>
+      <p id="presentation">PRESENTATION</p>
+      <div class="side">iterations:</div><input class="side" id="iterations" value="300000"/>
       <button class="right" id="buttonStart" onclick="callApplet();"></button>
       <script type="text/javascript">
-	document.getElementById("iterations").value = 300000;
+// 	document.getElementById("iterations").value = 300000;
       </script>
       <object type="application/x-java-applet" height="450" width="400" class="alone" id="IFSApplet" MAYSCRIPT>
 	<param name="id" value="IFSApplet">
 	<param name="classid" value="IFSApplet">
-	<!--param name="archive" value="build/ifs-felt-all.jar"-->
-	<param name="codebase" value="../ifs/bin">
+	<!--<param name="codebase" value="../ifs/bin">-->
+	<param name="archive" value="../ifs/build/ifs-felt-all.jar">
 	<param name="code" value="net.iubris.fractal_landscapes.ifs.applet.IFSApplet.class">
 	<param name="isInBrowser" value="true">
 	
-	Applet failed to run.  No Java plug-in was found.//if browser does not support java
+	Applet failed to run.  No Java plug-in was found. Browser does not support java?
       </object>
 
       <script type="text/javascript"> 
@@ -88,10 +89,12 @@ This file is part of FractaLandscapes, and developed by
     <script type="text/javascript">
       var labelsMap = {
 	'it': {
-	  "buttonStart": "Click"
+	  "buttonStart": "Click me!",
+	  presentation: "Felce IFS"
 	},
 	'default': {
-	  "buttonStart": "Click me"
+	  "buttonStart": "Click me!",
+	  presentation: "IFS Felt"
 	}
       }
       setTranslateLabels(getLanguage(), labelsMap);

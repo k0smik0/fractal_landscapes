@@ -65,12 +65,14 @@ public class MtFractalApplet extends Applet implements Runnable {
 			_corner_offset = Integer.parseInt( param );
 		
 		param = getParameter( "delay" );
-		if ( param != null )
+		if ( param != null ) {
 			_delay = Integer.parseInt( param );
+		}
 		
 		param = getParameter( "iterations" );
-		if ( param != null )
+		if ( param != null ) {
 			_iterations = Integer.parseInt( param );
+		}
 		
 		param = getParameter( "H" );
 		if ( param != null ) {
@@ -79,13 +81,15 @@ public class MtFractalApplet extends Applet implements Runnable {
 			setH(_H);
 		}
 		
-		param = getParameter( "sea_level" );
-		if ( param != null )
+		param = getParameter( "seaLevel" );
+		if ( param != null ) {
 			_sea_level = Integer.parseInt( param );
+		}
 		
 		param = getParameter( "debug" );
-		if ( (param != null) && param.equals("true") )
+		if ( (param != null) && param.equals("true") ) {
 			_debug = true;
+		}
 	}
 
 	// k0z
@@ -234,7 +238,7 @@ public class MtFractalApplet extends Applet implements Runnable {
 	public void printStatistics( Graphics g, PrintStream os ) {
 //		g.drawString(""+_width+"x"+_height+"+"+_margin, 10, 25);
 		// k0z
-		g.drawString("sea_level:"+_sea_level + " loop:"+_loop + " delay:"+_delay + " smoothness:"+_H, 10, 35);
+		g.drawString("sea_level:"+_sea_level + " loop:"+_loop + " delay:"+_delay + " smoothness:"+_H, 10, 15);
 		
 		Runtime rt = Runtime.getRuntime();
 
@@ -246,7 +250,7 @@ public class MtFractalApplet extends Applet implements Runnable {
 	    			 " msec...total memory=" + total_memory +
 	   				 ", free memory=" + free_memory;
 
-		g.drawString( msg, 10, 15 );
+		g.drawString( msg, 10, 35 );
 
 		if ( _curr_iter == 1 ) {
 			String os_name = System.getProperty( "os.name" );

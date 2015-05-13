@@ -1,0 +1,164 @@
+<!--
+Copyleft (c) 2015, Massimiliano Leone
+
+This file is part of FractaLandscapes,
+	and developed by Massimiliano Leone
+	<maximilianus@gmail.com> - http://plus.google.com/+MassimilianoLeone
+	as part of https://github.com/k0smik0/fractal_landscapes/
+
+    This is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this software. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+  <head>
+    <!-- to be included always - start -->
+    <!--<script src="js/jquery.1.7.2.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
+    <link rel="stylesheet" href="css/side-menu.css"></link>
+    <script src="js/items.js"></script>
+    <!-- to be included always - end -->
+    
+    <style>
+      .alone {
+	float:left; clear:both;
+	margin-left: 10px;
+      }
+      .side {
+	float:left; clear:none;
+	margin-left: 10px;
+	}
+      #presentation {
+	text-align:center;
+	width:150%;
+	margin-left: -34%;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div id="core"><!-- core -->
+      <p id="presentation"></p>
+      <div class="side" style="margin-left:-13%;">
+	<applet id="XMountainsApplet"
+	archive="../xmountains_java/build/xmountains.jar"
+	code="net.iubris.fractal_landscapes.xmountains.applet.XMountainsApplet.class" 
+	width=512 height=384 MAYSCRIPT>
+	  <param name="cornerOffset" value="250"/>
+	  
+	  <param name="levels" value="9"/>
+	  <param name="stop" value="2"/>
+	  <param name="fdim" value="0.65"/>
+	  <param name="seaLevel" value="0.0"/>
+	  <param name="snooze" value="100"/>
+	  <param name="sleep" value="1000"/>
+	</applet>
+      </div>
+
+      <div class="side">
+	<div class="alone">
+	  <div class="side">Recursion levels (Depth):</div>
+	  <input class="side" id="levels" size="9" value=10></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Non fractal recursions:</div>
+	  <input class="side" id="stop" size="1" value=2></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Smothness:</div>
+	  <input class="side" id="fdim" size="1" value=0.65></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Sea level:</div>
+	  <input class="side" id="seaLevel" size="1" value=0.0></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Sleep time before scrolling:</div>
+	  <input class="side" id="sleep" size="2" value=1000></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Rendering pause:</div>
+	  <input class="side" id="snooze" size="2" value=100></input>
+	</div>
+	
+	
+	<div class="alone">
+	  <button class="alone" id="buttonSet" onclick="setAppletParameter();">set parameters</button>
+	  <button style="margin-top: 5px;" class="alone" id="buttonPause" onclick="pauseRestartApplet();">pause</button>
+	</div>
+      </div>
+      <script type="text/javascript"> 
+	function setAppletParameter() {
+	  var levels = document.getElementById("levels").value;
+	  XMountainsApplet.setLevels(levels);
+
+	  var sleep = document.getElementById("sleep").value;
+	  XMountainsApplet.setSleep(sleep);
+
+	  var seaLevel = document.getElementById("seaLevel").value;
+	  XMountainsApplet.setSealevel(seaLevel);
+
+	  var snooze = document.getElementById("snooze").value;
+	  XMountainsApplet.setSnooze(snooze);
+
+	  var fdim = document.getElementById("fdim").value;
+	  XMountainsApplet.setFdim(fdim);
+	  
+	  var stop = document.getElementById("stop").value;
+	  XMountainsApplet.setStop(stop);
+	}
+	
+	var started = true;
+	function pauseRestartApplet() {
+	  XMountainsApplet.pauseOrContinue();
+	  var button = document.getElementById("buttonPause");
+	  if (started) {
+	    button.innerHTML = "start";
+	    started = false;
+	  } else {
+	    button.innerHTML = "pause";
+	    started = true;
+	  }
+	}
+      </script>
+
+      <p class="alone">
+	<div class="alone">original applet code at: <a href="http://www2.epcc.ed.ac.uk/~spb/javamountains/javamountains.html">http://www2.epcc.ed.ac.uk/~spb/javamountains/javamountains.html</a></div>
+	<div class="alone">modified by: Massimiliano Leone <a href="http://plus.google.com/+MassimilianoLeone">http://plus.google.com/+MassimilianoLeone</a></div>
+      </p>
+    </div><!-- end core -->
+    
+    <!-- to be included always - start -->
+    <script src="js/core.js"></script>
+    <script src="js/ui.js"></script>
+    <!-- to be included always - end -->
+    <!-- localization labels map - start -->  
+    <script type="text/javascript">
+      var labelsMap = {
+	'it': {
+	  "presentation": "Paesaggio prospettico 3D con monti, valli, mari: utilizza l'algoritmo Diamond-Square, aggiungendo textures e illuminazione"
+	},
+	'default': {
+	  "presentation": "A perspective 3D mountain landscape with sea and valley: it uses Diamond-Square algorithm, adding textures and lightning"
+	}
+      }
+      setTranslateLabels(getLanguage(), labelsMap);
+    </script>
+    <!-- localization labels map - end -->
+    
+    <script text="type/javascript">
+      fixHref();
+    </script>
+
+  </body>
+</html>

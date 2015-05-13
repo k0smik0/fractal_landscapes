@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="MtFractal">
+	<property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.8"/>
+	<property name="source" value="1.8"/>
+	<path id="jsobject_for_applet.userclasspath">
+		<pathelement location="/usr/lib/jvm/java-8-oracle/jre/lib/plugin.jar"/>
+	</path>
+	<path id="MtFractal.classpath">
+		<pathelement location="bin"/>
+		<!--path refid="jsobject_for_applet.userclasspath"/-->
+	</path>
+	<target name="init">
+		<mkdir dir="bin"/>
+	</target>
+	<target name="clean">
+		<delete dir="bin"/>
+		<delete file="build/mtfractal.jar"/>
+	</target>
+	<target depends="clean" name="cleanall"/>
+	<target depends="build-subprojects,build-project,jar" name="build"/>
+	<target name="build-subprojects"/>
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}"/>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src"/>
+			<classpath refid="MtFractal.classpath"/>
+		</javac>
+	</target>
+	<target name="build-refprojects"/>
+	<target name="MtFractalApplet">
+		<java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="no">
+			<arg line="mtfractal.html"/>
+			<classpath refid="MtFractal.classpath"/>
+		</java>
+	</target>
+	<target name="MtFractalApp">
+		<java classname="net.iubris.mtfractal.app.MtFractalApp" failonerror="true" fork="yes">
+			<classpath refid="MtFractal.classpath"/>
+		</java>
+	</target>
+	<target name="jar">
+		<mkdir dir="build"/>
+		<jar destfile="build/mtfractal.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="net.iubris.fractal_landscapes.mtfractal.app.MtFractalApp"/>
+			</manifest>
+		</jar>
+	</target>
+</project>

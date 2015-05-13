@@ -4,9 +4,9 @@
 	<property name="debuglevel" value="source,lines,vars"/>
 	<property name="target" value="1.8"/>
 	<property name="source" value="1.8"/>
-	<path id="jsobject_for_applet.userclasspath">
+	<!--path id="jsobject_for_applet.userclasspath">
 		<pathelement location="/usr/lib/jvm/java-8-oracle/jre/lib/plugin.jar"/>
-	</path>
+	</path-->
 	<!--path id="ifs.classpath">
         <pathelement location="bin"/>
         <path refid="jsobject_for_applet.userclasspath"/>
@@ -20,7 +20,7 @@
 		<delete file="build/ifs-felt-all.jar"/>
 	</target>
 	<target depends="clean" name="cleanall"/>
-	<target depends="build-subprojects, build-project" name="build"/>
+	<target depends="build-subprojects, build-project, jar" name="build"/>
 	<target name="build-subprojects"/>
 	<target depends="init" name="build-project">
 		<echo message="${ant.project.name}: ${ant.file}"/>
@@ -34,15 +34,15 @@
 	<target name="build-refprojects"/>
 	<target name="IFSApplet">
 		<java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
-			<arg line="IFSApplet.html"/>
+			<arg line="ifs.html"/>
 			<!--classpath refid="ifs.classpath"/-->
 		</java>
 	</target>
-	<target name="IFS">
+	<target name="IFSApp">
 		<java classname="net.iubris.fractal_landscapes.ifs.applet.IFS" failonerror="true" fork="yes">
 		</java>
 	</target>
-	<target name="jars">
+	<target name="jar">
 		<jar destfile="build/ifs-felt-all.jar" basedir="bin">
 			<manifest>
 				<attribute name="Main-Class" value="net.iubris.fractal_landscapes.ifs.standalone.IFS"/>

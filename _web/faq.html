@@ -22,19 +22,36 @@ This file is part of FractaLandscapes,
 <html>
   <head>
     <!-- to be included always - start -->
-    <!--<script src="js/jquery.1.7.2.min.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
     <link rel="stylesheet" href="css/side-menu.css"></link>
     <script src="js/items.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <!-- to be included always - end -->
     
   </head>
   <body>
     <div id="core"><!-- core -->
-      <p id="presentation"></p>
-      <applet archive="../koch/build/koch.jar" code="net.iubris.fractal_landscapes.koch.KKoch.class" width=450 height=450></applet>
+      FAQ TO DO !
+      <!-- sample -->
+      <div id="legend"></div>
+      <div id="about_header">
+	<span id="about_header_label">Massimiliano Leone:</span>
+	<a id="about_header_href" href="https://github.com/k0smik0">https://github.com/k0smik0</a>
+      </div>
+      <div id="plus">
+	<div class="plus_widget">
+	  <div class="g-person plus_widget" data-width="450" data-href="//plus.google.com/u/0/109344146425894173692" data-showcoverphoto="true" data-rel="author"></div>
+	</div>
+	<script type="text/javascript">
+	  window.___gcfg = {lang: 'it'};
+	  (function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'https://apis.google.com/js/platform.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+      </div>
+      <!-- end sample -->
     </div><!-- end core -->
     
     <!-- to be included always - start -->
@@ -43,15 +60,19 @@ This file is part of FractaLandscapes,
     <!-- to be included always - end -->
     <!-- localization labels map - start -->  
     <script type="text/javascript">
+      // sample
       var labelsMap = {
 	'it': {
-	  "presentation": "Il 'Fiocco di neve' di Koch - Clickare all'interno per procedere nell'iterazione"
+	  "header_h3": "Chi sono",
+	  "legend": ""
 	},
 	'default': {
-	  "presentation": "The Koch snowflake - Click inside to go further on iterations"
+	  "header_h3": "About Me",
+	  "legend": ""
 	}
       }
       setTranslateLabels(getLanguage(), labelsMap);
+      // end sample
     </script>
     <!-- localization labels map - end -->
     

@@ -31,6 +31,7 @@ function createLayoutDiv() {
 	  +'<a class="pure-menu-heading" id="projectNameMin" href='+''+'"index.html"></a>'
 	  +'<ul>'
 	    +'<li><a id="home" href="index.html">Home</a></li>'
+	    +'<li><a id="faq" href="faq.html">F.A.Q.</a></li>'
 	    +'<li><a id="about" href="'+''+'about.html"></a></li>'
 	    +'<li id="menu_li" class="menu-item-divided pure-menu-selected"></li>'
 	  +'</ul>'
@@ -61,10 +62,7 @@ function createMenuItems() {
     var href = hrefs[h];
     htmlValue = menuItemsMap[href];
     html += "<a class='menu_href' href='";
-    
-    
     html += href+".html'>"+htmlValue+"</a>";
-//     console.log(html);
   }
   menu_li.innerHTML = html;
 }
@@ -73,33 +71,8 @@ createMenuItems();
 function fixHref() {
   var pathnameArray = location.pathname.split("/");
   var currentPage = pathnameArray[pathnameArray.length-1];
-//   console.log(currentPage);
   if (root!=null) {
-//     if (currentPage == "index.html") {
-//       var o =  $('#about').attr("href");
-//       $('#about').attr("href", root+o);
-//     }      
-//     if (currentPage == "about.html") {
-//       // fix home and side title
-//       var ar = ["projectNameMin", "home"];
-//       for (var d in ar) {
-// 	var e = ar[d];
-// 	var o =  $('#'+e).attr("href");
-// 	var a = "../"+o;
-// 	$('#'+e).attr("href", a);
-//       }
-//       
-//       //fix side items
-//       $('a.menu_href').each(function(e){
-// 	var o =  $(this).attr("href");
-// // 	console.log(o);
-// 	var o =  $(this).attr("href","../"+o);
-//       });
-//     }
     if (currentPage != "index.html") {
-//       var o =  $('#about').attr("href");
-//       $('#about').attr("href", root+o);
-      // fix home and side title
       var ar = ["projectNameMin", "home"];
       for (var d in ar) {
 	var e = ar[d];
@@ -111,19 +84,20 @@ function fixHref() {
       // fix side items
       $('a.menu_href').each(function(e){
 	var o =  $(this).attr("href");
-// 	console.log(o);
 	var o =  $(this).attr("href",""+o);
       });
     } else {
-      // fix about
-      var about = $('#about');
-      var aboutHref = about.attr('href');
-      about.attr('href', root+aboutHref);
+      // fix pages inside _web
+      var pages = ["about","faq"];
+      for (var pi in pages) {
+	var p = $('#'+pages[pi]);
+	var pHref = p.attr('href');
+	p.attr('href', root+pHref);
+      }
       
       // fix side items
-      $('a.menu_href').each(function(e){
+      $('a.menu_href').each(function(e) {
 	var o =  $(this).attr("href");
-// 	console.log(o);
 	var o =  $(this).attr("href",root+o);
       });
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="uk/ac/ed/epcc/mountain/MAF.java" kind="src" path="src"/>
+	<classpathentry kind="src" path="src/main"/>
+	<classpathentry excluding="net/iubris/xmountains/app/controller/|net/iubris/xmountains/app/view/|uk/ac/ed/epcc/mountain/" kind="src" path="src/dev"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

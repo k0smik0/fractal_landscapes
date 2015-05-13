@@ -1,0 +1,134 @@
+<!--
+Copyleft (c) 2015, Massimiliano Leone
+
+This file is part of FractaLandscapes,
+	and developed by Massimiliano Leone
+	<maximilianus@gmail.com> - http://plus.google.com/+MassimilianoLeone
+	as part of https://github.com/k0smik0/fractal_landscapes/
+
+    This is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this software. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+  <head>
+    <!-- to be included always - start -->
+    <!--<script src="js/jquery.1.7.2.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
+    <link rel="stylesheet" href="css/side-menu.css"></link>
+    <script src="js/items.js"></script>
+    <!-- to be included always - end -->
+    
+    <style>
+      .alone {
+	float:left; clear:both;
+	margin-left: 10px;
+      }
+      .side {
+	float:left; clear:none;
+	margin-left: 10px;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div id="core"><!-- core -->
+      <p id="presentation">PRESENTATION</p>
+      <div class="side">
+	<applet id="MtFractalApplet"
+	archive="../MtFractal/build/mtfractal.jar"
+	code="net.iubris.fractal_landscapes.mtfractal.applet.MtFractalApplet.class" 
+	width=450 height=450 MAYSCRIPT>
+	  <param name="margin" value="20"/>
+	  <param name="cornerOffset" value="250"/>
+	  
+	  <param name="iterations" value="6"/>
+	  <param name="seaLevel" value="0"/>
+	  <param name="H" value="50"/>
+	  <param name="debug" value="true"/>
+	  <param name="delay" value="500"/>  
+	  <param name="loop" value="true"/>
+	</applet>
+      </div>
+      <div class="side">
+	<div class="alone">
+	  <div class="side">Iterations:</div>
+	  <input class="side" id="iterations" size="1" value=6></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Sea level:</div>
+	  <input class="side" id="seaLevel" size="1" value=20></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Smoothness:</div>
+	  <input class="side" id="H" size="1" value=50></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Delay (msec):</div>
+	  <input class="side" id="delay" size="2" value=500></input>
+	</div>
+	<div class="alone">
+	  <div class="side">Loop:</div>
+	  <input class="side" id="loop" size="2" value=true></input>
+	</div>
+	<button class="alone" id="set" onclick="setAppletParameter();">set</button>
+      </div>
+      <script type="text/javascript"> 
+	function setAppletParameter() {
+	    var iterations = document.getElementById("iterations").value;
+	    MtFractalApplet.setIterations(iterations);
+	    
+	    var H = document.getElementById("H").value;
+	    MtFractalApplet.setH(H);
+	    
+	    var seaLevel = document.getElementById("seaLevel").value;
+	    MtFractalApplet.setSeaLevel(seaLevel);
+	    
+	    var delay = document.getElementById("delay").value;
+	    MtFractalApplet.setDelay(delay);
+	    
+	    var loop = document.getElementById("loop").value;
+	    MtFractalApplet.setLoop(loop);
+	}
+      </script>
+
+      <p class="alone">
+	<div class="alone">original applet code at: <a href="http://www536.pair.com/bgw/applets/1.02/MtFractal/MtFractal.java">http://www536.pair.com/bgw/applets/1.02/MtFractal/MtFractal.java</a></div>
+	<div class="alone">modified by: Massimiliano Leone <a href="http://plus.google.com/+MassimilianoLeone">http://plus.google.com/+MassimilianoLeone</a></div>
+      </p>
+    </div><!-- end core -->
+    
+    <!-- to be included always - start -->
+    <script src="js/core.js"></script>
+    <script src="js/ui.js"></script>
+    <!-- to be included always - end -->
+    <!-- localization labels map - start -->  
+    <script type="text/javascript">
+      var labelsMap = {
+	'it': {
+	  "presentation": "Wireframe prospettico 3D di uno scenario con monti, valli, mari: utilizza l'algoritmo Diamond-Square"
+	},
+	'default': {
+	  "presentation": "A 3D perspective wireframe of a mountain landscape with sea and valley, using Diamond-Square algorithm"
+	}
+      }
+      setTranslateLabels(getLanguage(), labelsMap);
+    </script>
+    <!-- localization labels map - end -->
+    
+    <script text="type/javascript">
+      fixHref();
+    </script>
+
+  </body>
+</html>
