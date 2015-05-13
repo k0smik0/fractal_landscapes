@@ -13,11 +13,12 @@
 	</target>
 	<target name="clean">
 		<delete dir="bin/net" />
-		<delete file="build/xmountains.jar" />
 	</target>
-	<target depends="clean" name="cleanall" />
-	<target depends="build-subprojects,build-project,jar" name="build" />
-	<target name="build-subprojects" />
+	<target name="clean-jar">
+		<delete file="build/xmountains.jar"/>
+	</target>
+	<target depends="clean, clean-jar" name="cleanall" />
+	<target depends="build-project" name="build" />
 	<target depends="init" name="build-project">
 		<echo message="${ant.project.name}: ${ant.file}" />
 		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
@@ -25,24 +26,19 @@
 			<classpath refid="xmountains_java.classpath" />
 		</javac>
 	</target>
-	<target name="build-refprojects" />
-	<target name="XMountainsApplet">
-		<java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
-			<arg line="XMountainsApplet.html" />
-			<classpath refid="xmountains_java.classpath" />
-		</java>
+	<target name="run" depends="jar">
+		<exec executable="java">
+			<arg value="sun.applet.AppletViewer"/>
+			<arg value="xmountains.html"/>
+		</exec>
 	</target>
-	<target name="XMountainsApp">
-		<java classname="uk.ac.ed.epcc.mountain.app.XMountainsApp" failonerror="true" fork="yes">
-			<classpath refid="xmountains_java.classpath" />
-		</java>
-	</target>
-	<target name="jar">
+	<target name="jar" depends="build">
 		<mkdir dir="build" />
 		<jar destfile="build/xmountains.jar" basedir="bin">
 			<manifest>
 				<attribute name="Main-Class" value="net.iubris.fractal_landscapes.xmountains.app.XMountainsApp" />
 			</manifest>
 		</jar>
+		<antcall target="clean"/>
 	</target>
 </project>

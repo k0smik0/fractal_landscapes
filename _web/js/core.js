@@ -139,6 +139,7 @@ function getLanguage() {
   return language;
 }
 function setTranslateLabels(language,labelsMap) {
+// 	console.log(language);
 	switch(language) {
 	  case "it":
 	    if (labelsMap !== undefined) {

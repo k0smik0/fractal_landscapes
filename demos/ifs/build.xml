@@ -4,49 +4,51 @@
 	<property name="debuglevel" value="source,lines,vars"/>
 	<property name="target" value="1.8"/>
 	<property name="source" value="1.8"/>
-	<!--path id="jsobject_for_applet.userclasspath">
+	<path id="jsobject_for_applet.userclasspath">
 		<pathelement location="/usr/lib/jvm/java-8-oracle/jre/lib/plugin.jar"/>
-	</path-->
-	<!--path id="ifs.classpath">
+	</path>
+	<path id="ifs.classpath">
         <pathelement location="bin"/>
         <path refid="jsobject_for_applet.userclasspath"/>
-    </path-->
+  </path>
 	<target name="init">
 		<mkdir dir="bin"/>
 	</target>
 	<target name="clean">
 		<delete dir="bin/net"/>
 		<delete dir="bin/stdlibs"/>
-		<delete file="build/ifs-felt-all.jar"/>
 	</target>
-	<target depends="clean" name="cleanall"/>
-	<target depends="build-subprojects, build-project, jar" name="build"/>
-	<target name="build-subprojects"/>
+	<target name="clean-jar">
+		<delete file="build/ifs-felt.jar"/>
+	</target>
+	<target depends="clean, clean-jar" name="cleanall"/>
+	<target depends="build-project" name="build"/>
 	<target depends="init" name="build-project">
 		<echo message="${ant.project.name}: ${ant.file}"/>
 		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
 			<src path="src/standalone"/>
 			<src path="src/applet"/>
 			<src path="src/common"/>
-			<!--classpath refid="ifs.classpath"/-->
+			<include name="**/*.java"/>
+			<classpath refid="ifs.classpath"/>
 		</javac>
 	</target>
-	<target name="build-refprojects"/>
-	<target name="IFSApplet">
-		<java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
-			<arg line="ifs.html"/>
-			<!--classpath refid="ifs.classpath"/-->
-		</java>
+	<target name="run" depends="jar">
+		<exec executable="java">
+			<arg value="sun.applet.AppletViewer"/>
+			<arg value="ifs.html"/>
+		</exec>
 	</target>
 	<target name="IFSApp">
 		<java classname="net.iubris.fractal_landscapes.ifs.applet.IFS" failonerror="true" fork="yes">
 		</java>
 	</target>
-	<target name="jar">
-		<jar destfile="build/ifs-felt-all.jar" basedir="bin">
+	<target name="jar" depends="build">
+		<jar destfile="build/ifs-felt.jar" basedir="bin">
 			<manifest>
 				<attribute name="Main-Class" value="net.iubris.fractal_landscapes.ifs.standalone.IFS"/>
 			</manifest>
 		</jar>
+		<antcall target="clean"/>
 	</target>
 </project>

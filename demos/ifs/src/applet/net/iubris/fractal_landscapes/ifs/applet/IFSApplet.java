@@ -17,7 +17,7 @@ public class IFSApplet extends JApplet implements Runnable {
 
 	private static final long serialVersionUID = -7315365287365450617L;
 
-	private static final int DEFAULT_ITERATIONS = 100000;
+	private static final int DEFAULT_ITERATIONS = 200000;
 	private int iterations = DEFAULT_ITERATIONS;
 	
 	private JAppletDrawer drawer;

@@ -15,12 +15,13 @@
 		<mkdir dir="bin"/>
 	</target>
 	<target name="clean">
-		<delete dir="bin"/>
-		<delete file="build/mtfractal.jar"/>
+	  <delete dir="bin/net"/>
 	</target>
-	<target depends="clean" name="cleanall"/>
-	<target depends="build-subprojects,build-project,jar" name="build"/>
-	<target name="build-subprojects"/>
+	<target name="clean-jar">
+	  <delete file="build/mtfractal.jar"/>
+	</target>
+	<target depends="clean, clean-jar" name="cleanall"/>
+	<target depends="build-project" name="build"/>
 	<target depends="init" name="build-project">
 		<echo message="${ant.project.name}: ${ant.file}"/>
 		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
@@ -28,24 +29,19 @@
 			<classpath refid="MtFractal.classpath"/>
 		</javac>
 	</target>
-	<target name="build-refprojects"/>
-	<target name="MtFractalApplet">
-		<java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="no">
-			<arg line="mtfractal.html"/>
-			<classpath refid="MtFractal.classpath"/>
-		</java>
+	<target name="run" depends="jar">
+	  <exec executable="java">
+	    <arg value="sun.applet.AppletViewer"/>
+	    <arg value="mtfractal.html"/>
+	  </exec>
 	</target>
-	<target name="MtFractalApp">
-		<java classname="net.iubris.mtfractal.app.MtFractalApp" failonerror="true" fork="yes">
-			<classpath refid="MtFractal.classpath"/>
-		</java>
-	</target>
-	<target name="jar">
+	<target name="jar" depends="build">
 		<mkdir dir="build"/>
-		<jar destfile="build/mtfractal.jar" basedir="bin">
+	  <jar destfile="build/mtfractal.jar" basedir="bin">
 			<manifest>
 				<attribute name="Main-Class" value="net.iubris.fractal_landscapes.mtfractal.app.MtFractalApp"/>
 			</manifest>
 		</jar>
+		<antcall target="clean"/>
 	</target>
 </project>

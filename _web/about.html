@@ -22,50 +22,123 @@ This file (about.html) is part of FractaLandscapes,
 <html>
   <head>
     <!-- to be included always - start -->
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
     <link rel="stylesheet" href="css/side-menu.css"></link>
     <script src="js/items.js"></script>
     <!-- to be included always - end -->
-    
+
+    <style>
+			#about_header, #about_cards {
+				margin-top: 1em;
+			}
+			#about_cards {
+				height: 500px;
+			}
+			#github, #facebook {
+				clear: none;
+			}
+			#github, #plus_personal {
+				float: left;
+				margin-left: 3em;
+			}
+			#facebook, #plus_page {
+				float: right;
+				margin-right: 4em;
+			}
+			#plus_group {
+				clear: both;
+				padding-top: 1em;
+			}
+			#plus_title, #about_header {
+				text-align: center;
+			}
+			#plus_personal {
+				margin-left: 10em;
+			}
+			#plus_page {
+				margin-right: 10em;
+			}
+			#row1, #row2 {
+				float: left;
+				clear: both;
+			}
+			#about_header_label {
+				margin-bottom: 1em;
+			}
+
+    </style>
+
   </head>
   <body>
     <div id="core"><!-- core -->
-      <div id="legend"></div>
       <div id="about_header">
-	<span id="about_header_label">Massimiliano Leone:</span>
-	<a id="about_header_href" href="https://github.com/k0smik0">https://github.com/k0smik0</a>
-      </div>
-      <div id="plus">
-	<div class="plus_widget">
-	  <div class="g-person plus_widget" data-width="450" data-href="//plus.google.com/u/0/109344146425894173692" data-showcoverphoto="true" data-rel="author"></div>
-	</div>
-	<script type="text/javascript">
-	  window.___gcfg = {lang: 'it'};
-	  (function() {
-		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		po.src = 'https://apis.google.com/js/platform.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	  })();
-	</script>
+				<div id="about_header_label">Massimiliano Leone</div>
+				<img src="http://i632.photobucket.com/albums/uu50/GreenLava/rss_no_drop.png" height=25/>
+				<a id="about_header_href" href="http://www.iubris.net">http://www.iubris.net</a>
+			</div>
+			<div id="about_cards">
+
+				<div id="row_1">
+					<div id="github">
+					<div id="github_title">Github:</div>
+						<div id="github_card">
+							<div data-theme="default" data-height="150" data-width="300" data-github="k0smik0" class="github-card"></div>
+							<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+						</div>
+					</div>
+
+					<div id="facebook">
+						<div id="facebook_title">Facebook - Iubris.net:</div>
+						<div id="facebook_page_card">
+							<div id="fb-root"></div>
+							<script>(function(d, s, id) {
+								var js, fjs = d.getElementsByTagName(s)[0];
+								if (d.getElementById(id)) return;
+											js = d.createElement(s); js.id = id;
+								js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.3&appId=10150109250030858";
+								fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));</script>
+							<div class="fb-like" data-href="https://www.facebook.com/iubris.net" data-layout="standard" data-action="like" data-show-faces="true" data-share="true" data-width="300"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="row_2">
+					<div id="plus_group">
+						<div id="plus_title">Google Plus:</div>
+						<script src="https://apis.google.com/js/platform.js" async defer>
+							{lang: 'it'}
+						</script>
+						<div id="plus_personal">
+							<div class="g-person" data-width="197" data-href="//plus.google.com/u/0/109344146425894173692" data-rel="author"></div>
+						</div>
+						<div id="plus_page">
+							<div class="g-page" data-width="180" data-href="//plus.google.com/u/0/101452143427896087422" data-rel="publisher"></div>
+						</div>
+					</div>
+				</div>
+				
       </div>
     </div><!-- end core -->
-    
-    <!-- to be included always - start -->
+
+		<!-- to be included always - start -->
     <script src="js/core.js"></script>
     <script src="js/ui.js"></script>
     <!-- to be included always - end -->
     <!-- localization labels map - start -->  
-    <script type="text/javascript">
-      var labelsMap = {
-	'it': {
-	  "header_h3": "Chi sono",
-	  "legend": ""
-	},
-	'default': {
-	  "header_h3": "About Me",
-	  "legend": ""
-	}
+		<script type="text/javascript">
+			var labelsMap = {
+				'it': {
+					"header_h3": "Chi sono",
+					"legend": ""
+				},
+				'default': {
+					"header_h3": "About Me",
+					"legend": ""
+				}
       }
       setTranslateLabels(getLanguage(), labelsMap);
     </script>

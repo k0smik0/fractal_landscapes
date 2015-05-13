@@ -16,32 +16,33 @@
     </target>
     <target name="clean">
         <delete dir="bin"/>
-    				<delete file="build/koch.jar"/>
     </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project,jar" name="build"/>
-    <target name="build-subprojects"/>
+		<target name="clean-jar">
+			<delete file="build/koch.jar"/>
+		</target>
+    <target depends="clean, clean-jar" name="cleanall"/>
+    <target depends="build-project" name="build"/>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
-            	<include name="net/iubris/fractal_landscapes/koch/KKoch.java"/>
+						<include name="net/iubris/fractal_landscapes/koch/KKoch.java"/>
             <classpath refid="Koch.classpath"/>
         </javac>
     </target>
-    <target name="build-refprojects"/>
-    <target name="Koch">
-        <java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="no">
-            <arg line="kkoch.html"/>
-            <classpath refid="Koch.classpath"/>
-        </java>
-    </target>
-				<target name="jar">
-					<mkdir dir="build"/>
-					<jar destfile="build/koch.jar" basedir="bin">
-						<manifest>
-							<attribute name="Main-Class" value="net.iubris.fractal_landscapes.koch.KKoch"/>
-						</manifest>
-					</jar>
-				</target>
+		<target name="run" depends="jar">
+			<exec executable="java">
+				<arg value="sun.applet.AppletViewer"/>
+				<arg value="kkoch.html"/>
+			</exec>
+		</target>
+	<target name="jar" depends="build">
+			<mkdir dir="build"/>
+			<jar destfile="build/koch.jar" basedir="bin">
+				<manifest>
+					<attribute name="Main-Class" value="net.iubris.fractal_landscapes.koch.KKoch"/>
+				</manifest>
+			</jar>
+			<antcall target="clean"/>
+		</target>
 </project>

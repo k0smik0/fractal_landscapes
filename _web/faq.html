@@ -22,36 +22,48 @@ This file is part of FractaLandscapes,
 <html>
   <head>
     <!-- to be included always - start -->
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css"></link>
     <link rel="stylesheet" href="css/side-menu.css"></link>
     <script src="js/items.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <!-- to be included always - end -->
-    
+	
+    <style>
+      #faq {
+				padding-top: 2em;
+      }
+      #pre {
+				text-align: justify;
+      }
+			#source {
+				margin-top: 4em;
+			}
+    </style>
+
   </head>
   <body>
     <div id="core"><!-- core -->
-      FAQ TO DO !
-      <!-- sample -->
-      <div id="legend"></div>
-      <div id="about_header">
-	<span id="about_header_label">Massimiliano Leone:</span>
-	<a id="about_header_href" href="https://github.com/k0smik0">https://github.com/k0smik0</a>
+      <div id="faq">
+	<div id="pre"></div>
+	<ol>
+	  <li>
+	    <div id="jcontrol_pre"></div>
+	    <ul>
+	      <li id="jcontrol_linux"></li>
+	      <li id="jcontrol_win_osx"></li>
+	    </ul>
+	  </li>
+	  <li>
+	    <div id="addurl"></div>
+	  </li>
+	  <li>
+	    <div id="reload"></div>
+	  </li>
+	</ol>
+	<div id="source"></div>	
       </div>
-      <div id="plus">
-	<div class="plus_widget">
-	  <div class="g-person plus_widget" data-width="450" data-href="//plus.google.com/u/0/109344146425894173692" data-showcoverphoto="true" data-rel="author"></div>
-	</div>
-	<script type="text/javascript">
-	  window.___gcfg = {lang: 'it'};
-	  (function() {
-		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		po.src = 'https://apis.google.com/js/platform.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	  })();
-	</script>
-      </div>
-      <!-- end sample -->
     </div><!-- end core -->
     
     <!-- to be included always - start -->
@@ -63,12 +75,32 @@ This file is part of FractaLandscapes,
       // sample
       var labelsMap = {
 	'it': {
-	  "header_h3": "Chi sono",
-	  "legend": ""
+	  "pre": "Se le applet non si avviano correttamente, probabilmente ci sono dei blocchi di sicurezza applicati dal Java Security Manager: dalla versione 7 di Java solo i jar/applet/class firmati non sono soggetti a questa restrizione. Più informazioni <a href='https://www.java.com/it/download/help/jcp_security.xml'>qui.</a><br/>"
+	  +"Sfortunatamente, la firma di un jar richiede un certificato acquistabile da Verisign/Thawte/similari, ed è una spesa effettivamente eccessiva per un demo qual è questo insieme di applet ;D<br/>"
+	  +"Soluzione:",
+	  
+	  "jcontrol_pre": "Accedere al pannello di controllo Java",
+	  "jcontrol_linux": "Utenti Linux: digitare 'jcontrol' o 'ControlPanel' dal terminale;<br/>in alternativa, cercare 'Java Console' nel menu",
+	  "jcontrol_win_osx": "Utenti Windows/OSX: <a href='https://www.java.com/en/download/help/win_controlpanel.xml'>https://www.java.com/it/download/help/win_controlpanel.xml</a>",
+	  
+	  "addurl": "Aggiungere l'indirizzo di questo sito 'http://k0smik0.github.io' alla lista delle eccezioni, come spiegato  nella pagina<br/><a href='http://java.com/it/download/faq/exception_sitelist.xml'>http://java.com/en/download/faq/exception_sitelist.xml</a>",
+	  
+	  "reload": "Ricaricare la pagina - Eventualmente, riavviare il browser",
+	  "source": "Per chi volesse far eseguire le applet come applicazione standalone, il codice sorgente è disponibile all'url <a href='http://github.com/k0smik0/fractal_landscapes'>http://github.com/k0smik0/fractal_landscapes</a>.<br/>È sufficiente eseguire 'ant run' nelle directory di ogni demo: i sorgenti saranno compilati ed eseguiti (è necessario avere 'ant' installato, ovviamente)."
 	},
 	'default': {
-	  "header_h3": "About Me",
-	  "legend": ""
+	  "pre": "If applets don't start correctly, perhaps there are security blocks applied from Java Security Manager: since Java 7 only signed applet/jars/class are allowed to run as is. More info <a href='https://www.java.com/en/download/help/jcp_security.xml'>here.</a><br/>"
+	  +"Unfortunately, sign a jar requires a certificate from Verisign/Thawte/similar, and I don't have money to spend to buy a certificate to sign this demo applet set ;D.<br/>"
+	  +"The solution is:",
+	  
+	  "jcontrol_pre": "Open Java Control Panel",
+	  "jcontrol_linux": "Linux users: type 'jcontrol' or 'ControlPanel' from terminal;<br/>alternatively, search 'Java Console' in menu",
+	  "jcontrol_win_osx": "Windows/OSX users: <a href='https://www.java.com/en/download/help/win_controlpanel.xml'>https://www.java.com/en/download/help/win_controlpanel.xml</a>",
+	  
+	  "addurl": "Add this site url 'http://k0smik0.github.io' to exception list, as showed here:<br/><a href='http://java.com/en/download/faq/exception_sitelist.xml'>http://java.com/en/download/faq/exception_sitelist.xml</a>",
+	  
+	  "reload": "Reload the page - Eventually, restart the browser.",
+	  "source": "If you can't trust of binary applets, you can download source code at:<br/><a href='http://github.com/k0smik0/fractal_landscapes'>http://github.com/k0smik0/fractal_landscapes</a>.<br/>To run as local application, it's enough to run via ant: each demo provides a 'run' target, which compile and run. So, 'ant run', et voilà. (Obviously, you need 'ant' installed.)"
 	}
       }
       setTranslateLabels(getLanguage(), labelsMap);

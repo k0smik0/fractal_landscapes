@@ -12,14 +12,11 @@ var menuItemsMap = {
 };
 
 var labelItemsMap = {
-  classes: {
-    // title
-//     'projectName': 'FractaLandscapes'
+  "classes": {
   },
-  ids: {
+	// title and label above home
+  "ids": {
     'projectName': 'FractaLandscapes',
-    'projectNameMin': 'F.L.'
+    'projectNameMin': ''
   }
-  
-  // about
 }
