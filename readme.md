@@ -5,4 +5,4 @@ For an academic talk, I prepared this presentation [http://www.slideshare.net/k0
 Here, there are source code of demos showed in presentation above.    
   
 
-Demos are available (and working) at: [https://k0smik0.github.io/fractal_landscapes](https://k0smik0.github.io/fractal_landscapes/)
+Demos are available (and working) at: [http://fractalandscapes.iubris.net](http://fractalandscapes.iubris.net)
