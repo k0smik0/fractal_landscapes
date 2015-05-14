@@ -1,15 +1,11 @@
 #intro {
   height: 100%;
 }
-/*.header {
-  height: 10%;
-}*/
 content {
   text-align: center;
 }
 #intro_h2 {
   margin: 1% 0 0 0%;
-/*   width: 110%; */
   text-align: center;
 }
 #intro_h3 {
