@@ -25,21 +25,26 @@ content {
 }
 #github {
   margin: 1em;
-  margin-left: 7%;
+  margin-left: 14%;
 }
 #presentation {
-  margin-left: 1%;
+  margin-left: 4%;
+	text-align:center;
+	min-width: 775px;
 }
 #github,#data,#browsertip,#presentation,#disclaimer {
   float: left;
   clear: both;
 }
 #data,#disclaimer {
-  margin-left: 1%;
+  margin-left: 11%;
+	min-width: 690px;
 }
 #browsertip {
   margin-top: 3em;
-  margin-left: 10%;
+  margin-left: 13%;
+	text-align: center;
+	min-width: 645px;
 }
 #github_text {
   margin-top: 10px;
