@@ -71,11 +71,8 @@ createMenuItems();
 function fixHref() {
   var pathnameArray = location.pathname.split("/");
   var currentPage = pathnameArray[pathnameArray.length-1];
-// 	console.log(""+currentPage);
   if (root!=null) {
-		console.log(root);
     if (currentPage != "" && currentPage != "index.html") {
-// 			console.log("not index: "+currentPage);
       var ar = ["projectNameMin", "home"];
       for (var d in ar) {
 				var e = ar[d];
@@ -90,7 +87,6 @@ function fixHref() {
 				var o =  $(this).attr("href",""+o);
       });
 		} else if (currentPage == "" || currentPage == "index.html") {
-// 			console.log("index or similar: "+currentPage);
       // fix pages inside _web
       var pages = ["about","faq"];
       for (var pi in pages) {
