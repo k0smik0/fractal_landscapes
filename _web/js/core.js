@@ -71,34 +71,38 @@ createMenuItems();
 function fixHref() {
   var pathnameArray = location.pathname.split("/");
   var currentPage = pathnameArray[pathnameArray.length-1];
+// 	console.log(""+currentPage);
   if (root!=null) {
-    if (currentPage != "index.html") {
+		console.log(root);
+    if (currentPage != "" && currentPage != "index.html") {
+// 			console.log("not index: "+currentPage);
       var ar = ["projectNameMin", "home"];
       for (var d in ar) {
-	var e = ar[d];
-	var o =  $('#'+e).attr("href");
-	var a = "../"+o;
-	$('#'+e).attr("href", a);
+				var e = ar[d];
+				var o =  $('#'+e).attr("href");
+				var a = "../"+o;
+				$('#'+e).attr("href", a);
       }
-      
+
       // fix side items
       $('a.menu_href').each(function(e){
-	var o =  $(this).attr("href");
-	var o =  $(this).attr("href",""+o);
+				var o =  $(this).attr("href");
+				var o =  $(this).attr("href",""+o);
       });
-    } else {
+		} else if (currentPage == "" || currentPage == "index.html") {
+// 			console.log("index or similar: "+currentPage);
       // fix pages inside _web
       var pages = ["about","faq"];
       for (var pi in pages) {
-	var p = $('#'+pages[pi]);
-	var pHref = p.attr('href');
-	p.attr('href', root+pHref);
+				var p = $('#'+pages[pi]);
+				var pHref = p.attr('href');
+				p.attr('href', root+pHref);
       }
-      
+
       // fix side items
       $('a.menu_href').each(function(e) {
-	var o =  $(this).attr("href");
-	var o =  $(this).attr("href",root+o);
+				var o =  $(this).attr("href");
+				var o =  $(this).attr("href",root+o);
       });
     }
   }
