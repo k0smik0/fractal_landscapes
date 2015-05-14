@@ -1,7 +1,7 @@
-name:     Base URL Test
+name:     F L
 description: Testing Jekyll Base Url
 
 safe:     true
-auto:     true
-server:   true
-baseurl:  /fractal_landscapes
+#auto:     true
+serve:   true
+baseurl:  /fractalandscapes
